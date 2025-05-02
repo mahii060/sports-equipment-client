@@ -9,6 +9,8 @@ import {
 import Register from './pages/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import SignIn from './pages/SignIn.jsx';
+import Home from './pages/Home.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 
 
@@ -16,7 +18,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: "/register",
         element: <Register />,

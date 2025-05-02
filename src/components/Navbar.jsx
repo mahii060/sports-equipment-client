@@ -1,6 +1,6 @@
 
-import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthContext';
 
 const Navbar = () => {
@@ -31,7 +31,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
+                    <li><NavLink to="/">Home</NavLink></li>
                     <li><a>All Sports Equipment</a></li>
                     <li><a>Add Equipment</a></li>
                     <li><a>My Equipment List</a></li>
