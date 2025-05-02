@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Register = () => {
+
+    console.log(import.meta.env.VITE_API_KEY);
     return (
         <div className='flex items-center justify-center'>
             <div className="w-full max-w-md p-4 rounded-md shadow-2xl sm:p-8 bg-base-100 text-gray-900">
