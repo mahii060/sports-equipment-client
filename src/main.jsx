@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Register from './pages/Register.jsx';
 
 
 
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-
+        path: "/register",
+        element: <Register />
       }
     ]
   },

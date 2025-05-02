@@ -36,8 +36,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Register</a>
+                <Link to="/register" className="btn">Register</Link>
                 <a className="btn">Sign In</a>
+                <div className="w-10">
+                    <img className='rounded-full'
+                        alt="Tailwind CSS Navbar component"
+                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
             </div>
         </div>
     );

@@ -13,14 +13,12 @@ function App() {
         <div className="h-[65px]">
           <Navbar />
         </div>
-
         <main className="flex-grow">
           <Outlet />
         </main>
 
         <div className="h-[220px]">
           <Footer />
-          {/* <Footer2 /> */}
         </div>
       </div>
     </>
