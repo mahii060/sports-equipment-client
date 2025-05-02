@@ -1,9 +1,11 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
 
-        <div className="navbar bg- bg-slate-900 shadow-sm text-gray-50">
+        <div className="navbar w-full shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -23,25 +25,19 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl text">EquiSports</a>
+                <Link to="/" className="text-xl tracking-widest uppercase font-bold p-1 rounded hover:shadow-2xl">Equi<span className='text-red-600'>Sports</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    <li><a>Home</a></li>
+                    <li><a>All Sports Equipment</a></li>
+                    <li><a>Add Equipment</a></li>
+                    <li><a>My Equipment List</a></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Sign Up</a>
+                <a className="btn">Register</a>
+                <a className="btn">Sign In</a>
             </div>
         </div>
     );
