@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Register from './pages/Register.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import SignIn from './pages/SignIn.jsx';
 
 
 
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/register",
-        element: <Register />
-      }
+        element: <Register />,
+      },
+      {
+        path: "/signIn",
+        element: <SignIn />,
+      },
     ]
   },
 ]);
