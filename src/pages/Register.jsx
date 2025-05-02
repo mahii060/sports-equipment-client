@@ -14,7 +14,7 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, photo, email, password }
+        const user = { name, photo, email }
         console.log(user);
         const passwordValidate = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&^#()_+=-]{6,16}$/;
 
@@ -22,6 +22,21 @@ const Register = () => {
             userSignUp(email, password)
                 .then(result => {
                     Swal.fire("User Registered successfully!");
+
+                    // Making post http request
+                    fetch("http://localhost:5000/users", {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        body: JSON.stringify(user)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                        })
+
+                    // Consoling the user
                     console.log(result);
                 })
                 .catch(error => {

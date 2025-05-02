@@ -1,13 +1,12 @@
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthContext';
 
 const Navbar = () => {
-    const { activeUser } = useContext(AuthContext)
+    const { activeUser } = useContext(AuthContext);
     console.log(activeUser);
     return (
-
         <div className="navbar w-full shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
@@ -42,11 +41,6 @@ const Navbar = () => {
                 <Link to="/register" className="btn">Register</Link>
                 <Link to="/signIn" className="btn">Sign In</Link>
                 <p>{activeUser?.email}</p>
-                <div className="">
-                    <img className='w-10 h-10 rounded-full'
-                        alt="Tailwind CSS Navbar component"
-                        src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600" />
-                </div>
             </div>
         </div>
     );
