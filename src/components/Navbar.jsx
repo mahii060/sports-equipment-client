@@ -38,10 +38,10 @@ const Navbar = () => {
             <div className="navbar-end">
                 <Link to="/register" className="btn">Register</Link>
                 <a className="btn">Sign In</a>
-                <div className="w-10">
-                    <img className='rounded-full'
+                <div className="">
+                    <img className='w-10 h-10 rounded-full'
                         alt="Tailwind CSS Navbar component"
-                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                        src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600" />
                 </div>
             </div>
         </div>

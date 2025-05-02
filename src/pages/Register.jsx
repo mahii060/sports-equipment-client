@@ -1,18 +1,66 @@
-import React from 'react';
+import React, { useContext, useState, } from 'react';
+import { AuthContext } from '../providers/AuthContext';
+import Swal from 'sweetalert2';
 
 const Register = () => {
+    const { userSignUp } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(false)
 
-    console.log(import.meta.env.VITE_API_KEY);
+    const handleRegister = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const user = { name, photo, email, password }
+        console.log(user);
+        const passwordValidate = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&^#()_+=-]{6,16}$/;
+
+
+
+        if (passwordValidate.test(password)) {
+            userSignUp(email, password)
+                .then(result => {
+                    Swal.fire("User Registered successfully!");
+                    console.log(result);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        else {
+            Swal.fire({
+                icon: "error",
+                title: "Invalid password.",
+                text: "Password must be between 6 to 16 characters and must contain 1 uppercase, 1 lowercase and 1 number!",
+            });
+        }
+
+        // if (passwordValidate.test(password)) {
+        //     userSignUp(email, password)
+        //         .then(result => {
+        //             Swal.fire("User Registered successfully!");
+        //             console.log(result);
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        // }
+
+
+    }
+
     return (
         <div className='flex items-center justify-center'>
             <div className="w-full max-w-md p-4 rounded-md shadow-2xl sm:p-8 bg-base-100 text-gray-900">
-                <h2 className="mb-3 text-3xl font-semibold text-center">Register</h2>
+                <h2 className="mb-3 text-3xl font-semibold text-center">Sign up</h2>
                 <p className="text-sm text-center text-gray-600">Already have an account? <a
-                    href="#" rel="noopener noreferrer" className="focus:underline hover:underline">
+                    href="#" rel="noopener noreferrer" className="focus:underline text-blue-600 hover:underline">
                     Sign in here
                 </a>
                 </p>
-                <form noValidate="" action="" className="space-y-8">
+                <form onSubmit={handleRegister} className="space-y-8">
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <label htmlFor="name" className="block text-left text-sm">Name</label>
@@ -31,10 +79,14 @@ const Register = () => {
                                 <label htmlFor="password" className="text-sm">Password</label>
                                 <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-gray-600">Forgot password?</a>
                             </div>
-                            <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-indigo-600" />
+                            <input type={showPassword ? 'text' : 'password'} name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-indigo-600" />
+                            <p onClick={() => setShowPassword(!showPassword)}
+                                className='text-left font-semibold cursor-pointer text-blue-700'
+                            >{showPassword ? 'Hide Password' : 'Show Password'}</p>
+
                         </div>
                     </div>
-                    <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-red-600 hover:bg-red-700 text-gray-50">Sign in</button>
+                    <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-red-600 hover:bg-red-800 text-gray-50">Sign up</button>
                 </form>
                 <div className="flex items-center w-full my-4">
                     <hr className="w-full text-gray-600" />
@@ -54,11 +106,15 @@ const Register = () => {
                         </svg>
                         <p>Login with GitHub</p>
                     </button>
-
                 </div>
             </div>
+
         </div>
     );
 };
 
 export default Register;
+
+
+
+
