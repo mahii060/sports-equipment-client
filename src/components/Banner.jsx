@@ -9,7 +9,7 @@ const Banner = () => {
                     {/* Image: Half Width */}
                     <img
                         src="https://i.pinimg.com/736x/56/33/9f/56339f6ed785143370111d323f0450f8.jpg"
-                        className="w-1/2 object-cover"
+                        className="w-full md:w-1/2 md:object-cover"
                         alt="Slide 1"
                     />
                     {/* Content: Half Width */}
@@ -28,8 +28,8 @@ const Banner = () => {
 
                 {/* navigation button */}
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                    <a href="#slide4" className="btn btn-circle hover:bg-red-500 hover:text-gray-50">❮</a>
-                    <a href="#slide2" className="btn btn-circle hover:bg-red-500 hover:text-gray-50">❯</a>
+                    <a href="#slide4" className="btn btn-circle text-red-600 hover:bg-red-500 hover:text-gray-50">❮</a>
+                    <a href="#slide2" className="btn btn-circle text-red-600 hover:bg-red-500 hover:text-gray-50">❯</a>
                 </div>
             </div>
 
