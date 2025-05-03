@@ -19,7 +19,7 @@ const Delivery = () => {
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block h-12 w-px bg-gray-400"></div>
+            <div className="hidden md:block h-12 w-px bg-gray-500"></div>
 
             {/* Feature 2 */}
             <div className="flex items-center gap-4">
@@ -36,7 +36,7 @@ const Delivery = () => {
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block h-12 w-px bg-gray-400"></div>
+            <div className="hidden md:block h-12 w-px bg-gray-500"></div>
 
             {/* Feature 3 */}
             <div className="flex items-center gap-4">

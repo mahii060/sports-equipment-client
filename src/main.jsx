@@ -11,6 +11,7 @@ import AuthProvider from './providers/AuthProvider.jsx';
 import SignIn from './pages/SignIn.jsx';
 import Home from './pages/Home.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import AddEquipment from './pages/AddEquipment.jsx';
 
 
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/addEquipment",
+        element: <AddEquipment />,
       },
       {
         path: "/signIn",
