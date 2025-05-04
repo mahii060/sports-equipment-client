@@ -12,6 +12,8 @@ import SignIn from './pages/SignIn.jsx';
 import Home from './pages/Home.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import AddEquipment from './pages/AddEquipment.jsx';
+import AllEquipments from './pages/AllEquipments.jsx';
+import EquipmentDetails from './pages/EquipmentDetails.jsx';
 
 
 
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => fetch('http://localhost:5000/equipments'),
+        loader: () => fetch('http://localhost:5000/equipments/limited'),
       },
       {
         path: "/register",
@@ -33,6 +35,16 @@ const router = createBrowserRouter([
       {
         path: "/addEquipment",
         element: <AddEquipment />,
+      },
+      {
+        path: "/allEquipments",
+        element: <AllEquipments />,
+        loader: () => fetch('http://localhost:5000/equipments'),
+      },
+      {
+        path: "/equipments/:_id",
+        element: <EquipmentDetails />,
+        loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params._id}`),
       },
       {
         path: "/signIn",

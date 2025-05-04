@@ -8,8 +8,13 @@ const Navbar = () => {
     console.log(activeUser);
     const links = [
         <li><NavLink className={({ isActive }) => isActive ? "underline font-bold" : ""} to="/">Home</NavLink></li>,
-        <li><a>All Sports Equipment</a></li>,
-        <li><NavLink className={({ isActive }) => isActive ? "underline font-bold" : ""} to="/addEquipment">Add Equipment</NavLink></li>,
+        <li><a></a></li>,
+        <li>
+            <NavLink className={({ isActive }) => isActive ? "underline font-bold" : ""} to="/allEquipments"
+            >All Sports Equipment</NavLink>
+        </li>,
+        <li><NavLink className={({ isActive }) => isActive ? "underline font-bold" : ""} to="/addEquipment"
+        >Add Equipment</NavLink></li>,
         <li><a>My Equipment List</a></li>
     ]
 
