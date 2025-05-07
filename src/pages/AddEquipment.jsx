@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthContext';
 import Swal from 'sweetalert2';
 
 const AddEquipment = () => {
-    const { activeUser } = useContext(AuthContext)
 
     const handleAddEquipment = event => {
         event.preventDefault();
@@ -15,11 +13,10 @@ const AddEquipment = () => {
         const deliveryTime = form.deliveryTime.value;
         const customization = form.customization.value;
         const stockStatus = form.stockStatus.value;
-        const email = activeUser?.email;
         const photo = form.photo.value;
         const description = form.description.value;
 
-        const equipmentDetails = { itemName, category, price, rating, deliveryTime, customization, stockStatus, email, photo, description }
+        const equipmentDetails = { itemName, category, price, rating, deliveryTime, customization, stockStatus, photo, description }
 
         fetch("http://localhost:5000/equipments", {
             method: "POST",

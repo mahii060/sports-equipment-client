@@ -14,7 +14,7 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, photo, email }
+        const user = { name, photo, email, password }
         console.log(user);
         const passwordValidate = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&^#()_+=-]{6,16}$/;
 

@@ -5,7 +5,6 @@ import { AuthContext } from '../providers/AuthContext';
 
 const Navbar = () => {
     const { activeUser } = useContext(AuthContext);
-    console.log(activeUser);
     const links = [
         <li><NavLink className={({ isActive }) => isActive ? "underline font-bold" : ""} to="/">Home</NavLink></li>,
         <li><a></a></li>,
@@ -15,7 +14,13 @@ const Navbar = () => {
         </li>,
         <li><NavLink className={({ isActive }) => isActive ? "underline font-bold" : ""} to="/addEquipment"
         >Add Equipment</NavLink></li>,
-        <li><a>My Equipment List</a></li>
+
+        <li>
+            <NavLink
+                className={({ isActive }) => isActive ? "underline font-bold" : ""}
+                to="/myEquipmentList"
+            >My Equipment List</NavLink>
+        </li>,
     ]
 
     return (

@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthContext';
+import Swal from 'sweetalert2';
 
 const EquipmentDetails = () => {
+    const { activeUser } = useContext(AuthContext)
     const loadedEquipment = useLoaderData()
     const navigate = useNavigate()
     const handleGoBack = () => {
         navigate(-1)
     }
-    console.log(loadedEquipment);
-    const { itemName, photo, price, rating, description, category,
+    const { _id, itemName, photo, price, rating, description, category,
         deliveryTime, stockStatus, customization } = loadedEquipment;
+
+    const handleAddToMyList = (email, loadedEquipment) => {
+        const { _id, rest } = loadedEquipment;
+        const usersEquipment = { email, equipmentId: _id, rest }
+
+        fetch('http://localhost:5000/usersEquipments', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(usersEquipment)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged && data.insertedId) {
+                    Swal.fire("Equipment added to list successfully!");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                Swal.fire("Failed to add equipment.");
+            });
+    }
 
     return (
         <div>
@@ -73,7 +99,7 @@ const EquipmentDetails = () => {
 
                     {/* BUTTONS */}
                     <div className="flex justify-center space-x-2">
-                        <button type="button" className="btn btn-error">Add to My List</button>
+                        <button onClick={() => handleAddToMyList(activeUser?.email, loadedEquipment)} type="button" className="btn btn-error">Add to My List</button>
                         <button type="button" className="btn btn-error">Buy Now</button>
                         <button onClick={handleGoBack} type="button" className="btn btn-error">Go Back</button>
                     </div>
@@ -85,33 +111,3 @@ const EquipmentDetails = () => {
 };
 
 export default EquipmentDetails;
-
-/*
-<div className="p-6 text-left space-y-4 lg:col-span-5 bg-gradient-to-r from-pink-100 via-red-100 to-red-200 rounded-xl shadow-lg">
-  <h3 className="text-3xl font-bold text-center text-gray-900 sm:text-4xl">{itemName}</h3>
-
-  <div className="flex items-center justify-between">
-    <span className="badge badge-warning text-lg px-4 py-2">BDT {price}.00</span>
-    <span className="badge badge-success text-sm">Rating: {rating}⭐</span>
-  </div>
-
-  <div className="grid grid-cols-2 gap-3 text-gray-700 mt-4">
-    <p><span className="font-semibold">Category:</span> {category}</p>
-    <p><span className="font-semibold">Customization:</span> {customization}</p>
-    <p><span className="font-semibold">Delivery Time:</span> {deliveryTime} days</p>
-    <p>
-      <span className="font-semibold">Stock:</span>
-      <span className={`ml-2 font-bold ${stockStatus === "In Stock" ? "text-green-600" : "text-red-600"}`}>
-        {stockStatus}
-      </span>
-    </p>
-  </div>
-
-  <div className="pt-4">
-    <h4 className="text-lg font-semibold mb-2 text-gray-900">Description:</h4>
-    <p className="text-justify text-gray-800 leading-relaxed">{description}</p>
-  </div>
-</div>
-
-
-*/

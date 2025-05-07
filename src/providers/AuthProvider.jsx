@@ -5,6 +5,8 @@ import auth from '../firebase/firebase.config';
 
 const AuthProvider = ({ children }) => {
     const [activeUser, setActiveUser] = useState(null)
+    // const currentUser = auth.currentUser;
+    // console.log(currentUser);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => setActiveUser(user))

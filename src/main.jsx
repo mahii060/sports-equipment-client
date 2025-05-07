@@ -14,6 +14,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import AddEquipment from './pages/AddEquipment.jsx';
 import AllEquipments from './pages/AllEquipments.jsx';
 import EquipmentDetails from './pages/EquipmentDetails.jsx';
+import MyEquipmentList from './pages/MyEquipmentList.jsx';
 
 
 
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         path: "/equipments/:_id",
         element: <EquipmentDetails />,
         loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params._id}`),
+      },
+      {
+        path: "/myEquipmentList",
+        element: <MyEquipmentList />,
       },
       {
         path: "/signIn",
